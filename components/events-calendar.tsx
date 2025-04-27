@@ -158,7 +158,7 @@ export default function EventsCalendar() {
     .sort((a, b) => a.startDate.getTime() - b.startDate.getTime())
 
   return (
-    <section id="events" className="w-full py-8 md:py-16 bg-green-50 dark:bg-green-950/30">
+    <section id="events" className="w-full py-8 md:py-16 bg-orange-50 dark:bg-orange-950/20">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">אירועים</h2>
@@ -230,7 +230,7 @@ export default function EventsCalendar() {
                             </span>
                           </div>
                         </div>
-                        <Badge className="ml-2">{event.category}</Badge>
+                        <Badge className="ml-2 bg-orange-500 hover:bg-orange-600">{event.category}</Badge>
                       </div>
                     </CardHeader>
 

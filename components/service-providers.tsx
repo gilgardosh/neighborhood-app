@@ -108,7 +108,7 @@ export default function ServiceProviders() {
   })
 
   return (
-    <section id="services" className="w-full py-12 md:py-24 bg-green-50 dark:bg-green-950/30">
+    <section id="services" className="w-full py-12 md:py-24 bg-orange-50 dark:bg-orange-950/20">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">נותני שירות</h2>
@@ -148,7 +148,7 @@ export default function ServiceProviders() {
                 <CardContent>
                   <div className="flex items-center mb-2">
                     <div className="flex items-center">
-                      <Star className="h-4 w-4 fill-primary text-primary ml-1" />
+                      <Star className="h-4 w-4 fill-orange-500 text-orange-500 ml-1" />
                       <span className="font-medium">{provider.rating}</span>
                     </div>
                     <span className="text-sm text-muted-foreground mr-2">({provider.reviews})</span>

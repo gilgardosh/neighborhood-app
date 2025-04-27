@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
@@ -13,8 +14,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
-          <Link href="/" className="font-bold text-2xl text-primary">
-            הדרים
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/icon.png" alt="הדרים" width={32} height={32} />
+            <span className="font-bold text-2xl text-primary">הדרים</span>
           </Link>
         </div>
 
@@ -42,8 +44,9 @@ export default function Header() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/90 md:hidden">
           <div className="container flex h-16 items-center justify-between">
-            <Link href="/" className="font-bold text-2xl text-primary">
-              הדרים
+            <Link href="/" className="flex items-center gap-2">
+              <Image src="/icon.png" alt="הדרים" width={32} height={32} />
+              <span className="font-bold text-2xl text-primary">הדרים</span>
             </Link>
             <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(false)}>
               <X className="h-6 w-6" />

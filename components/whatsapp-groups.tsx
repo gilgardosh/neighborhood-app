@@ -77,7 +77,7 @@ export default function WhatsAppGroups() {
                   <Card key={group.id} className="bg-white dark:bg-gray-800">
                     <CardHeader className="pb-2">
                       <CardTitle className="flex items-center">
-                        <MessageSquare className="h-5 w-5 ml-2 text-primary" />
+                        <MessageSquare className="h-5 w-5 ml-2 text-orange-500" />
                         {group.name}
                       </CardTitle>
                       <CardDescription>{group.members} חברים</CardDescription>

@@ -12,6 +12,13 @@ const rubik = Rubik({
 export const metadata = {
   title: "הדרים",
   description: "אתר הקהילה של שכונת הדרים",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: { url: "/apple-touch-icon.png", type: "image/png" },
+  },
     generator: 'v0.dev'
 }
 
