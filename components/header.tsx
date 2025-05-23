@@ -3,12 +3,21 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X } from "lucide-react"
+import { Menu, X, User, LogIn } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
+import { useSession, signOut } from "next-auth/react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { data: session } = useSession()
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -31,6 +40,35 @@ export default function Header() {
             שירותים
           </Link>
           <ModeToggle />
+          {session ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <User className="h-5 w-5" />
+                  <span className="sr-only">תפריט משתמש</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem asChild>
+                  <Link href="/profile">פרופיל</Link>
+                </DropdownMenuItem>
+                {session.user.role === "admin" && (
+                  <DropdownMenuItem asChild>
+                    <Link href="/admin">ניהול</Link>
+                  </DropdownMenuItem>
+                )}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => signOut({ callbackUrl: "/" })}>התנתקות</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Button variant="outline" size="sm" asChild>
+              <Link href="/login">
+                <LogIn className="h-4 w-4 ml-2" />
+                התחברות
+              </Link>
+            </Button>
+          )}
         </nav>
 
         <div className="flex md:hidden">
@@ -75,6 +113,34 @@ export default function Header() {
             >
               שירותים
             </Link>
+            {session ? (
+              <>
+                <Link
+                  href="/profile"
+                  className="text-lg font-medium hover:text-primary"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  פרופיל
+                </Link>
+                {session.user.role === "admin" && (
+                  <Link
+                    href="/admin"
+                    className="text-lg font-medium hover:text-primary"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    ניהול
+                  </Link>
+                )}
+                <Button onClick={() => signOut({ callbackUrl: "/" })}>התנתקות</Button>
+              </>
+            ) : (
+              <Button asChild>
+                <Link href="/login" onClick={() => setIsMenuOpen(false)}>
+                  <LogIn className="h-4 w-4 ml-2" />
+                  התחברות
+                </Link>
+              </Button>
+            )}
             <div className="flex items-center">
               <ModeToggle />
             </div>
