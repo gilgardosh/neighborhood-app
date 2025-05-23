@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import LoginForm from "@/components/login-form"
+import { Suspense } from "react"
 
 export const metadata: Metadata = {
   title: "התחברות | הדרים",
@@ -14,7 +15,9 @@ export default function LoginPage() {
         <h1 className="text-3xl font-bold">התחברות</h1>
         <p className="text-gray-500 dark:text-gray-400">הזינו את פרטי ההתחברות שלכם</p>
       </div>
-      <LoginForm />
+      <Suspense>
+        <LoginForm />
+      </Suspense>
       <div className="text-center text-sm">
         <p>
           אין לכם חשבון?{" "}
